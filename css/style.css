@@ -1,0 +1,5 @@
+.donut-button,
+.donut-picture {
+  border-radius: 80% 80% 80% 80%;
+  width: 100%;
+}
