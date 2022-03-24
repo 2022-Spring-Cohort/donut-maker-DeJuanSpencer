@@ -79,15 +79,43 @@ numberOfMultiplierEl.classList.add("multiplierEl");
 numberOfMultiplierEl.innerHTML =
   "This is how many multipliers you have: " + donut.multiplierCount;
 
+const clicksLeft = document.createElement("div");
+clicksLeft.classList.add("clicksLeft");
+
+display.appendChild(clicksLeft);
+
+const multiplierClicksLeft = document.createElement("div");
+clicksLeft.classList.add("multiplierClicksLeft");
+display.appendChild(multiplierClicksLeft);
+
 function updateStats() {
-  showPoints.innerText = "Score:" + donut._score;
-  numberOfClicks.innerHTML =
+  showPoints.innerText = "Score:" + donut.score;
+  numberOfClicks.innerText =
     "This is how many clicks you have: " + donut.numberOfClicks;
 
-  numberOfAutoEl.innerHTML =
+  numberOfAutoEl.innerText =
     "This is how many autoclicks you have: " + donut.clickMultiplierCount;
-  numberOfMultiplierEl.innerHTML =
+  numberOfMultiplierEl.innerText =
     "This is how many multipliers you have: " + donut.multiplierCount;
+
+  showClicksLeft();
+}
+
+function showClicksLeft() {
+  const multiplierCost = donut.multiplierCost;
+  const clickMultiplierCost = donut.clickMultiplierCost;
+  const score = donut.score;
+  let clickDifference = clickMultiplierCost - score;
+  let multiplierDifference = multiplierCost - score;
+
+  if (clickDifference > 0) {
+    clicksLeft.innerText =
+      "Clicks left for next click multiplier: " + clickDifference;
+  }
+  if (multiplerDifference > 0) {
+    multiplierClicksLeft.innerText =
+      "Clicks left for next autoclicker: " + multiplierDifference;
+  }
 }
 
 const resetButton = document.createElement("button");
@@ -103,15 +131,14 @@ display.appendChild(numberOfAutoEl);
 donutButton.addEventListener("click", () => {
   let score = donut.plusOne();
   let soundEffect = new Audio("adf.wav");
-  showPoints.innerText = "Score:" + score;
+  updateStats();
 });
 
 multiplier.addEventListener("click", () => {
   if (donut._score >= donut._multiplierCost) {
     donut.multiplier();
     let score = donut._score.toFixed(1);
-    showPoints.innerText = "Score:" + score;
-    "This is how many multipliers you have: " + donut.multiplierCount;
+
     // console.log("Multiplier Count: " + donut._multiplierCount);
     // console.log("Multiplier Rate: " + donut._multiplierRate);
     // console.log("Multiplier Cost: " + donut._multiplierCost);
@@ -124,9 +151,6 @@ clickMultiplier.addEventListener("click", () => {
     donut.clickMultiplier();
     let score = donut._score.toFixed(1);
 
-    showPoints.innerText = "Score:" + donut._score;
-    numberOfAutoEl.innerHTML =
-      "This is how many autoclicks you have: " + donut.clickMultiplierCount;
     updateStats();
     // console.log("Multiplier Count: " + donut._multiplierCount);
     // console.log("Multiplier Rate: " + donut._multiplierRate);

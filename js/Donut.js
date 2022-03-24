@@ -84,12 +84,22 @@ class Donut {
     }
   }
 
+  get score() {
+    return this._score;
+  }
   get multiplierCount() {
     return this._multiplierCount;
   }
 
+  get multiplierCost() {
+    return this._multiplierCost;
+  }
   get clickMultiplierCount() {
     return this._clickMultiplierCount;
+  }
+
+  get clickMultiplierCost() {
+    return this._clickMultiplierCost;
   }
 
   get numberOfClicks() {
