@@ -2,6 +2,7 @@ import { Donut } from "/js/Donut.js";
 
 const donut = new Donut();
 console.log(donut);
+let clickValue = donut.clickMultiplierRate;
 
 const head = document.querySelector("head");
 
@@ -44,10 +45,18 @@ const display = document.createElement("section");
 const donutButton = document.createElement("button");
 donutButton.classList.add("donut-button");
 donutButton.innerHTML = "<img class = 'donut-picture' src=pictures/donut.png>";
+
+const clickValueEl = document.createElement("div");
+clickValueEl.classList.add("clickValueEl");
+clickValueEl.innerText = clickValue;
+const clickEl = document.createElement("div");
+clickEl.classList.add("clickEl");
+clickEl.appendChild(donutButton);
+clickEl.appendChild(clickValueEl);
 const tools = document.createElement("section");
 tools.classList.add("tools");
 
-donutContainer.appendChild(donutButton);
+donutContainer.appendChild(clickEl);
 showPoints.innerText = "Score: " + donut._score;
 
 autoClickers.appendChild(multiplier);
@@ -89,14 +98,14 @@ clicksLeft.classList.add("multiplierClicksLeft");
 display.appendChild(multiplierClicksLeft);
 
 function updateStats() {
+  clickValueEl.innerText = donut.clickValue;
   showPoints.innerText = "Score:" + donut.score;
   numberOfClicks.innerText =
     "This is how many clicks you have: " + donut.numberOfClicks;
-
   numberOfAutoEl.innerText =
-    "This is how many autoclicks you have: " + donut.clickMultiplierCount;
+    "This is how many autoclicks you have: " + donut.multiplierCount;
   numberOfMultiplierEl.innerText =
-    "This is how many multipliers you have: " + donut.multiplierCount;
+    "This is how many multipliers you have: " + donut.clickMultiplierCount;
 
   showClicksLeft();
 }

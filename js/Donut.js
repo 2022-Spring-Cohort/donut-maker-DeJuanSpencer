@@ -16,7 +16,7 @@ class Donut {
   }
 
   plusOne() {
-    this._clickIncrease = this.clickMultiplierRate;
+    this._clickIncrease = this._clickMultiplierRate;
 
     console.log("Click: " + this._clickIncrease);
     this._score += this._clickIncrease;
@@ -86,6 +86,10 @@ class Donut {
 
   get score() {
     return this._score;
+  }
+
+  get clickValue() {
+    return this._clickMultiplierRate;
   }
   get multiplierCount() {
     return this._multiplierCount;
