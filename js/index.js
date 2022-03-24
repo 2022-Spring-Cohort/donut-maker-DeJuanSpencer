@@ -6,6 +6,25 @@ let clickValue = donut.clickMultiplierRate;
 
 const head = document.querySelector("head");
 
+const fredEl = document.createElement("li");
+fredEl.innerHTML = "<a href = '#'> Fred the Baker </a>";
+
+const cookieClickerReferenceEl = document.createElement("li");
+cookieClickerReferenceEl.innerHTML = "<a href = '#'> Cookie Clicker </a>";
+
+const contactInformationEl = document.createElement("li");
+contactInformationEl.innerHTML = "<a href = '#'> My contact information </a>";
+
+const menuOptions = document.createElement("ul");
+menuOptions.classList.add("navigationList");
+
+const navigationButton = document.createElement("button");
+navigationButton.classList.add("navigationButton");
+navigationButton.innerText = "Menu";
+
+const navigationEL = document.createElement("nav");
+navigationEL.classList.add("navigation");
+
 const body = document.querySelector("body");
 const titleEl = document.createElement("title");
 
@@ -14,6 +33,11 @@ const headerEl = document.createElement("header");
 headerEl.classList.add("navigation");
 headerEl.innerHTML =
   " <h1 onclick='CollapseExpandAllUtil.collapseExpandAll'>Tribute to <a href= 'https://orteil.dashnet.org/cookieclicker/' target = 'blank'> Cookie Clicker </a></h1>";
+
+menuOptions.appendChild(fredEl);
+menuOptions.appendChild(cookieClickerReferenceEl);
+menuOptions.appendChild(contactInformationEl);
+headerEl.appendChild(menuOptions);
 
 const container = document.createElement("div");
 container.classList.add("container");
